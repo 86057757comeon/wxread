@@ -66,7 +66,7 @@ while index <= READ_NUM:
 
     if 'succ' in resData:
         index += 1
-        time.sleep(30)
+        time.sleep(data['rt'] + 1)
         logging.info(f"✅ 阅读成功，阅读进度：{(index - 1) * data['rt'] / 60.0} 分钟")
 
     else:
