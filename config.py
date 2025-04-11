@@ -1,6 +1,7 @@
 # config.py 自定义配置,包括阅读次数、推送token的填写
 import os
 import re
+import random
 
 """
 可修改区域
@@ -59,7 +60,8 @@ headers = {
 #     "ps": "b1d32a307a4c3259g016b67",
 #     "pc": "080327b07a4c3259g018787",
 # }
-data1 = {
+datas = [
+    {
     'appId': 'wb182564874663h1484727348',
     'b': '2ba32d00813ab9142g013a3c',
     'c': 'a87322c014a87ff679a21ea',
@@ -74,8 +76,8 @@ data1 = {
     'ct': 1744343419,
     'ps': '813323507a65a6ffg015fcd',
     'pc': '33e321407a65a6ffg01121d',
-}
-data2 = {
+},
+{
     'appId': 'wb182564874663h1484727348',
     'b': '2ba32d00813ab9142g013a3c',
     'c': 'a87322c014a87ff679a21ea',
@@ -90,8 +92,8 @@ data2 = {
     'ct': 1744343513,
     'ps': '813323507a65a6ffg015fcd',
     'pc': '33e321407a65a6ffg01121d',
-}
-data3 = {
+},
+{
     'appId': 'wb182564874663h1484727348',
     'b': '2ba32d00813ab9142g013a3c',
     'c': 'a87322c014a87ff679a21ea',
@@ -106,8 +108,8 @@ data3 = {
     'ct': 1744343575,
     'ps': '813323507a65a6ffg015fcd',
     'pc': '33e321407a65a6ffg01121d',
-}
-data4 = {
+},
+{
     'appId': 'wb182564874663h1484727348',
     'b': '2ba32d00813ab9142g013a3c',
     'c': 'a87322c014a87ff679a21ea',
@@ -122,8 +124,8 @@ data4 = {
     'ct': 1744343636,
     'ps': '813323507a65a6ffg015fcd',
     'pc': '33e321407a65a6ffg01121d',
-}
-data5 = {
+},
+{
     'appId': 'wb182564874663h1484727348',
     'b': '2ba32d00813ab9142g013a3c',
     'c': 'a87322c014a87ff679a21ea',
@@ -139,8 +141,8 @@ data5 = {
     'ps': '813323507a65a6ffg015fcd',
     'pc': '33e321407a65a6ffg01121d',
 
-}
-data6 = {
+},
+{
     'appId': 'wb182564874663h1484727348',
     'b': '2ba32d00813ab9142g013a3c',
     'c': 'a87322c014a87ff679a21ea',
@@ -156,8 +158,8 @@ data6 = {
     'ps': '813323507a65a6ffg015fcd',
     'pc': '33e321407a65a6ffg01121d',
 
-}
-data7 = {
+},
+{
     'appId': 'wb182564874663h1484727348',
     'b': '2ba32d00813ab9142g013a3c',
     'c': 'a87322c014a87ff679a21ea',
@@ -172,9 +174,9 @@ data7 = {
     'ct': 1744343832,
     'ps': '813323507a65a6ffg015fcd',
     'pc': '33e321407a65a6ffg01121d',
-}
+}]
 
-
+data = random.choice(datas)
 def convert(curl_command):
     """提取bash接口中的headers与cookies
     支持 -H 'Cookie: xxx' 和 -b 'xxx' 两种方式的cookie提取
