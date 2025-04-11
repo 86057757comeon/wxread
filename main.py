@@ -52,6 +52,7 @@ def get_wr_skey():
 
 
 index = 1
+read_time = 0
 while index <= READ_NUM:
     data = random.choice(datas)
     data['ct'] = int(time.time())
@@ -67,7 +68,8 @@ while index <= READ_NUM:
     if 'succ' in resData:
         index += 1
         time.sleep(data['rt'] + 1)
-        logging.info(f"✅ 阅读成功，阅读进度：{(index - 1) * data['rt'] / 60.0} 分钟")
+        read_time += data['rt'] / 60.0
+        logging.info(f"✅ 阅读成功，阅读进度：{read_time} 分钟")
 
     else:
         logging.warning("❌ cookie 已过期，尝试刷新...")
@@ -87,4 +89,4 @@ logging.info("🎉 阅读脚本已完成！")
 
 if PUSH_METHOD not in (None, ''):
     logging.info("⏱️ 开始推送...")
-    push(f"🎉 微信读书自动阅读完成！\n⏱️ 阅读时长：{(index - 1) * 0.5}分钟。", PUSH_METHOD)
+    push(f"🎉 微信读书自动阅读完成！\n⏱️ 阅读时长：{read_time}分钟。", PUSH_METHOD)
