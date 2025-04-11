@@ -8,7 +8,7 @@ import hashlib
 import requests
 import urllib.parse
 from push import push
-from config import data, headers, cookies, READ_NUM, PUSH_METHOD
+from config import datas, headers, cookies, READ_NUM, PUSH_METHOD
 
 # 配置日志格式
 logger = logging.getLogger(__name__)
@@ -53,6 +53,7 @@ def get_wr_skey():
 
 index = 1
 while index <= READ_NUM:
+    data = random.choice(datas)
     data['ct'] = int(time.time())
     data['ts'] = int(time.time() * 1000)
     data['rn'] = random.randint(0, 1000)
@@ -66,7 +67,7 @@ while index <= READ_NUM:
     if 'succ' in resData:
         index += 1
         time.sleep(30)
-        logging.info(f"✅ 阅读成功，阅读进度：{(index - 1) * 0.5} 分钟")
+        logging.info(f"✅ 阅读成功，阅读进度：{(index - 1) * data['rt'] / 60.0} 分钟")
 
     else:
         logging.warning("❌ cookie 已过期，尝试刷新...")
