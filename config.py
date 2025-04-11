@@ -176,7 +176,7 @@ datas = [
     'pc': '33e321407a65a6ffg01121d',
 }]
 
-data = random.choice(datas)
+
 def convert(curl_command):
     """提取bash接口中的headers与cookies
     支持 -H 'Cookie: xxx' 和 -b 'xxx' 两种方式的cookie提取
